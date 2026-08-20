@@ -13,6 +13,7 @@ Canonical repository for ChatGPT Project settings and reusable prompts.
 | Prompt title | Description |
 |----|----|
 | `pretty-r-scripts` | Improves the documentation, formatting, organization, and readability of R scripts while strictly preserving their substantive behavior and computational logic. |
+| `review-technical-manuscript` | Audits technical manuscripts in four passes covering organization, repetition, unclear passages, and factual inaccuracies, with response-ready issue tables. |
 
 ## Projects
 
@@ -28,8 +29,9 @@ Canonical repository for ChatGPT Project settings and reusable prompts.
 `COCOWASH!` is both an identity check and a re-anchoring command. When invoked, the project must:
 
 1.  Respond with the project's `# Role` converted from `You are ...` to `I am ...`.
-2.  Print the complete current project settings retrieved from the canonical GitHub file, preserving their Markdown structure.
-3.  Silently re-anchor behavior to those settings before continuing.
+2.  Resolve the canonical GitHub settings from the specified branch by verifying the latest commit SHA affecting that file, then retrieve the file at that exact commit SHA. Cached, indexed, previously retrieved, or remembered copies are not authoritative.
+3.  Print the complete commit-specific project settings, preserving their Markdown structure.
+4.  Silently re-anchor behavior to those settings before continuing.
 
 Printing the settings is intentional. In testing, explicitly bringing the retrieved settings into the conversation improved adherence to the remote project configuration.
 
@@ -87,9 +89,9 @@ Its `COCOWASH!` response is therefore:
 
 > I am writing-modes, a mode-based editor for academic prose and related professional writing.
 
-The response should contain only that first-person identity unless another format is explicitly requested. After responding, the model silently re-anchors itself to the complete current project settings for the remainder of the chat.
+After the first-person identity, the model must retrieve the canonical settings from the specified GitHub branch without relying on a previously retrieved, cached, indexed, or remembered copy. It first verifies the latest commit SHA affecting that file on that branch, retrieves the file at that exact commit, treats the commit-specific version as authoritative, and prints the complete settings before silently re-anchoring behavior to them for the remainder of the chat.
 
-This serves two purposes. First, it provides a simple identity check tied to the canonical settings. Second, it reduces project drift by restoring the project's intended interpretation rules. For example, in writing-modes, `PRO Top 10 soccer-focused YouTubers` should be interpreted as a request to enter `PRO` prompt-editing mode, not as a request to list YouTubers directly.
+This serves two purposes. First, it provides a simple identity check tied to a verifiably current canonical file. Second, it reduces project drift by restoring the project's intended interpretation rules. For example, in writing-modes, `PRO Top 10 soccer-focused YouTubers` should be interpreted as a request to enter `PRO` prompt-editing mode, not as a request to list YouTubers directly.
 
 `COCOWASH!` does not override higher-priority ChatGPT or system instructions. It re-establishes the behavior defined by the current project settings within those constraints.
 

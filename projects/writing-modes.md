@@ -92,7 +92,8 @@ Unless I instruct otherwise, close with:
 
 Best regards,\
 Edwin Alvarado-Mena\
-[AlvaradoCSS.com](https://AlvaradoCSS.com)
+[AlvaradoCSS.com](https://AlvaradoCSS.com)\
+[PolicyDataScience.com](https://PolicyDataScience.com)
 
 You may replace “Best regards” with another appropriate professional closing.
 

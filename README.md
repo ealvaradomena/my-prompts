@@ -12,6 +12,7 @@ Canonical repository for ChatGPT Project settings and reusable prompts.
 
 | Project title | Description |
 |----|----|
+| `patchmymess` | Produces minimal PatchMyMess-compatible ZIPs containing only added or replaced project files at their exact project-relative paths. |
 | `project-settings-editor` | Turns rough project-settings drafts into lean, precise instructions built to guide ChatGPT across every chat in a project. |
 | `prompt-editor` | Refines draft prompts into precise, practical instructions for LLMs. |
 | `writing-modes` | Provides mode-based editing for academic prose, emails, prompts, slides, websites, and blogs. |

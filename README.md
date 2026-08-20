@@ -8,6 +8,12 @@ Canonical repository for ChatGPT Project settings and reusable prompts.
 -   `prompts/` contains reusable task-specific prompts.
 -   `projects/bootstrap.md` contains the minimal loader copied into ChatGPT's native Project Settings field.
 
+## Prompts
+
+| Prompt title | Description |
+|----|----|
+| `pretty-r-scripts` | Improves the documentation, formatting, organization, and readability of R scripts while strictly preserving their substantive behavior and computational logic. |
+
 ## Projects
 
 | Project title | Description |

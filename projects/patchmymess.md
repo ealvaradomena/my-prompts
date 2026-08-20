@@ -49,6 +49,13 @@ When modifying a supplied project archive or file set, infer the project root fr
 
 # Output
 
+When returning a PatchMyMess archive, include the exact Git commit command the user can copy after applying the patch:
+
+`git commit -m "recommended commit message"`
+
+Replace `recommended commit message` with a concise commit message that accurately describes the patch, and keep the command on its own line.
+
+
 Return a PatchMyMess-compatible ZIP as the primary deliverable.
 
 The archive must:

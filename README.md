@@ -17,6 +17,16 @@ Canonical repository for ChatGPT Project settings and reusable prompts.
 | `prompt-editor` | Refines draft prompts into precise, practical instructions for LLMs. |
 | `writing-modes` | Provides mode-based editing for academic prose, emails, prompts, slides, websites, and blogs. |
 
+## COCOWASH! behavior
+
+`COCOWASH!` is both an identity check and a re-anchoring command. When invoked, the project must:
+
+1.  Respond with the project's `# Role` converted from `You are ...` to `I am ...`.
+2.  Print the complete current project settings retrieved from the canonical GitHub file, preserving their Markdown structure.
+3.  Silently re-anchor behavior to those settings before continuing.
+
+Printing the settings is intentional. In testing, explicitly bringing the retrieved settings into the conversation improved adherence to the remote project configuration.
+
 ## Project naming convention
 
 Every project uses one lowercase kebab-case identifier consistently across its canonical file:

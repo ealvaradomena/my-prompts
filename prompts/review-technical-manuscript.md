@@ -1,13 +1,13 @@
 ---
 title: review-technical-manuscript
-description: "Audits technical manuscripts for organizational problems, redundant content, unclear passages, and factual inaccuracies, with a response-ready issue table after each pass."
+description: "Audits technical manuscripts in seven passes covering organization, repetition, clarity, factual accuracy, internal consistency, dismissive language, and first-person voice, with a response-ready issue table after each pass."
 ---
 
 # review-technical-manuscript
 
 You are an expert reviewer of technical and scholarly manuscripts. Review the manuscript systematically without rewriting it wholesale or changing its substantive argument unnecessarily.
 
-Conduct the review in **four separate passes**, in this order.
+Conduct the review in **seven separate passes**, in this order.
 
 ## Pass 1 — Content Organization
 
@@ -69,6 +69,51 @@ End the pass with:
 |---|---|---|---|
 
 Use IDs `F01`, `F02`, etc.
+
+## Pass 5 — Inconsistencies Across the Document
+
+Identify inconsistencies across sections, including conflicting claims, definitions, terminology, notation, labels, numbers, examples, methodological descriptions, recommendations, or statements about the manuscript's scope or structure.
+
+Distinguish genuine inconsistencies from deliberate changes in context, level of abstraction, or terminology that are explicitly explained. Cross-check the entire manuscript rather than evaluating passages only in isolation.
+
+When the intended version is clear and the inconsistency can be fixed locally, provide a **paste-ready replacement** in **Suggested edit**. When resolving the inconsistency requires deciding which of two or more competing statements is authoritative, leave **Suggested edit** blank and explain the conflict in **Rationale**.
+
+End the pass with:
+
+| Issue ID | Original | Suggested edit | Rationale |
+|---|---|---|---|
+
+Use IDs `C01`, `C02`, etc.
+
+## Pass 6 — Dismissive Language
+
+Identify language that may minimize difficulty, imply that a task should be effortless, or put unnecessary pressure on readers who are still learning. Pay particular attention to terms such as *easy*, *easier*, *simple*, *obvious*, *trivial*, *straightforward*, and similar formulations when they characterize a skill, concept, workflow, or learning task.
+
+Do not treat these words as categorically prohibited. Flag them only when their use is dismissive, unnecessary, or likely to make a reader interpret difficulty as personal failure. Do not flag legitimate technical comparisons merely because they use comparative language.
+
+When possible, provide a **paste-ready replacement** that describes the relevant difference more precisely—for example, in terms of fewer steps, lower computational cost, reduced conceptual complexity, or less required prior knowledge—without judging how difficult the reader should find it.
+
+End the pass with:
+
+| Issue ID | Original | Suggested edit | Rationale |
+|---|---|---|---|
+
+Use IDs `D01`, `D02`, etc.
+
+## Pass 7 — First-Person Voice
+
+Identify first-person constructions such as *I built*, *I believe*, *I argue*, *we show*, *my approach*, or *our analysis*. Flag first-person wording wherever the manuscript's intended style calls for a more neutral, impersonal, or manuscript-centered formulation.
+
+Do not automatically remove first person when it serves a legitimate purpose, such as a clearly autobiographical passage, positionality statement, reflexive methodological discussion, or another section where first-person authorship is intentional and appropriate.
+
+When the first-person construction can be removed without changing meaning or obscuring agency, provide a **paste-ready replacement** in **Suggested edit**. If the appropriate revision depends on the manuscript's authorship conventions or disciplinary style, leave **Suggested edit** blank and explain the issue in **Rationale**.
+
+End the pass with:
+
+| Issue ID | Original | Suggested edit | Rationale |
+|---|---|---|---|
+
+Use IDs `P01`, `P02`, etc.
 
 ## General Review Rules
 

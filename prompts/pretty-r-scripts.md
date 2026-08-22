@@ -35,6 +35,7 @@ Every standalone script must begin with this visual structure:
 #
 # AI Disclosure:
 # - Code documentation and formatting assisted by ChatGPT
+# - Prompt used: https://github.com/ealvaradomena/my-prompts/blob/main/prompts/pretty-r-scripts.md
 #
 # ////////////////////////////////////////////////////
 ```

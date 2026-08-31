@@ -1,55 +1,142 @@
 # my-prompts
 
-Canonical repository for ChatGPT Project settings and reusable prompts.
+README file created with generative AI for exceptional documentation
+depth. See:
+https://github.com/ealvaradomena/my-prompts/tree/main/prompts/readme-builder
 
-## Structure
+Canonical repository for persistent ChatGPT Project settings and
+reusable task-specific prompts.
 
--   `projects/` contains persistent settings for individual ChatGPT Projects.
--   `prompts/` contains reusable task-specific prompts.
--   `projects/bootstrap.md` contains the minimal loader copied into ChatGPT's native Project Settings field.
+The repository separates **project-level behavior** from **task-specific
+prompts**. Files in `projects/` define persistent instructions for
+individual ChatGPT Projects, while files in `prompts/` define reusable
+instructions that can be invoked for a particular editing,
+documentation, review, or coding task.
 
-## Prompts
+## Repository structure
 
-| Prompt title | Description |
-|----|----|
-| `pretty-r-scripts` | Improves the documentation, formatting, organization, and readability of R scripts while strictly preserving their substantive behavior and computational logic. |
-| `review-technical-manuscript` | Audits technical manuscripts in four passes covering organization, repetition, unclear passages, and factual inaccuracies, with response-ready issue tables. |
+``` text
+my-prompts/
+├── projects/
+│   ├── bootstrap.md
+│   ├── codex-prompt-editor.md
+│   ├── patchmymess.md
+│   ├── project-settings-editor.md
+│   ├── prompt-editor.md
+│   └── writing-modes.md
+├── prompts/
+│   ├── pretty-python-scripts.md
+│   ├── pretty-r-scripts.md
+│   ├── readme-builder.md
+│   └── review-technical-manuscript.md
+├── .gitignore
+└── README.md
+```
 
-## Projects
+### `projects/`
 
-| Project title | Description |
-|----|----|
-| `patchmymess` | Produces minimal PatchMyMess-compatible ZIPs containing only added or replaced project files at their exact project-relative paths. |
-| `project-settings-editor` | Turns rough project-settings drafts into lean, precise instructions built to guide ChatGPT across every chat in a project. |
-| `prompt-editor` | Refines draft prompts into precise, practical instructions for LLMs. |
-| `writing-modes` | Provides mode-based editing for academic prose, emails, prompts, slides, websites, and blogs. |
+Canonical settings for persistent ChatGPT Projects. These files define a
+project's role, purpose, behavior, rules, interaction model, outputs,
+and commands.
 
-## COCOWASH! behavior
+  ------------------------------------------------------------------------------------------------------
+  Project                                                            Purpose
+  ------------------------------------------------------------------ -----------------------------------
+  [`codex-prompt-editor`](projects/codex-prompt-editor.md)           Converts rough implementation
+                                                                     requests into precise,
+                                                                     implementation-ready prompts for
+                                                                     Codex.
 
-`COCOWASH!` is both an identity check and a re-anchoring command. When invoked, the project must:
+  [`patchmymess`](projects/patchmymess.md)                           Produces minimal
+                                                                     PatchMyMess-compatible ZIPs
+                                                                     containing only added or replaced
+                                                                     project files at their exact
+                                                                     project-relative paths.
 
-1.  Respond with the project's `# Role` converted from `You are ...` to `I am ...`.
-2.  Resolve the canonical GitHub settings from the specified branch by verifying the latest commit SHA affecting that file, then retrieve the file at that exact commit SHA. Cached, indexed, previously retrieved, or remembered copies are not authoritative.
-3.  Print the complete commit-specific project settings, preserving their Markdown structure.
-4.  Silently re-anchor behavior to those settings before continuing.
+  [`project-settings-editor`](projects/project-settings-editor.md)   Turns rough project-settings drafts
+                                                                     into lean, precise instructions
+                                                                     built to guide ChatGPT across every
+                                                                     chat in a project.
 
-Printing the settings is intentional. In testing, explicitly bringing the retrieved settings into the conversation improved adherence to the remote project configuration.
+  [`prompt-editor`](projects/prompt-editor.md)                       Refines draft prompts into precise,
+                                                                     practical instructions for language
+                                                                     models.
 
-## Project naming convention
+  [`writing-modes`](projects/writing-modes.md)                       Provides mode-based editing for
+                                                                     academic prose, emails, prompts,
+                                                                     slides, websites, and blogs.
+  ------------------------------------------------------------------------------------------------------
 
-Every project uses one lowercase kebab-case identifier consistently across its canonical file:
+[`projects/bootstrap.md`](projects/bootstrap.md) is the minimal loader
+intended for ChatGPT's native Project Settings field. It directs ChatGPT
+to retrieve and follow a canonical project-settings file from a supplied
+URL.
 
--   the filename stem;
--   the YAML `title`;
--   the project name in `# Role`;
--   references to the project in `MENU!`; and
--   the first-person identity returned by `COCOWASH!`.
+### `prompts/`
 
-For example, `projects/project-settings-editor.md` uses `title: project-settings-editor`, its Role begins `You are project-settings-editor, ...`, and `COCOWASH!` begins `I am project-settings-editor, ...`.
+Reusable prompts for bounded tasks. Unlike project settings, these files
+are designed to guide a particular operation rather than persistently
+define an entire ChatGPT Project.
+
+  -------------------------------------------------------------------------------------------------------------
+  Prompt                                                                    Purpose
+  ------------------------------------------------------------------------- -----------------------------------
+  [`Pretty Python Scripts`](prompts/pretty-python-scripts.md)               Improves Python script
+                                                                            documentation, formatting,
+                                                                            organization, and readability while
+                                                                            preserving computational behavior.
+
+  [`pretty-r-scripts`](prompts/pretty-r-scripts.md)                         Improves R script documentation,
+                                                                            formatting, organization, and
+                                                                            readability while strictly
+                                                                            preserving substantive behavior and
+                                                                            computational logic.
+
+  [`readme-builder`](prompts/readme-builder.md)                             Inspects a GitHub repository and
+                                                                            creates or revises its README with
+                                                                            accurate setup, usage, repository
+                                                                            structure, inputs, outputs, and
+                                                                            reproducibility documentation.
+
+  [`review-technical-manuscript`](prompts/review-technical-manuscript.md)   Audits technical manuscripts in
+                                                                            seven passes covering organization,
+                                                                            repetition, clarity, factual
+                                                                            accuracy, internal consistency,
+                                                                            dismissive language, and
+                                                                            first-person voice.
+  -------------------------------------------------------------------------------------------------------------
+
+## Using a ChatGPT Project configuration
+
+The repository does not require a software installation or dependency
+environment. Its primary artifacts are Markdown instruction files.
+
+To configure a ChatGPT Project:
+
+1.  Choose the canonical settings file under `projects/`.
+2.  Obtain the raw GitHub URL for that file on the intended branch.
+3.  Copy the contents of
+    [`projects/bootstrap.md`](projects/bootstrap.md) into the ChatGPT
+    Project's native Project Settings field.
+4.  Replace `[PROJECT_SETTINGS_URL]` with the raw URL of the chosen
+    canonical settings file.
+5.  Start a new chat in that Project and send `COCOWASH!` to test
+    retrieval and re-anchor the chat to the canonical settings.
+
+For example, the bootstrap has this form:
+
+``` text
+Retrieve and follow the current project settings from:
+
+[PROJECT_SETTINGS_URL]
+```
+
+The canonical settings remain in this repository; the native ChatGPT
+Project Settings field only needs the loader.
 
 ## Project-settings contract
 
-Every canonical project-settings file uses the same top-level structure:
+Canonical project-settings files follow a common top-level structure:
 
 1.  `# Role`
 2.  `# Purpose`
@@ -59,50 +146,118 @@ Every canonical project-settings file uses the same top-level structure:
 6.  `# Output`
 7.  `# Commands`
 
-Every `# Commands` section begins with:
+The `# Commands` section begins with three universal commands:
 
-1.  `## MENU!`
-2.  `## COCOWASH!`
-3.  `## MACUMBA!`
+  -----------------------------------------------------------------------
+  Command                             Function
+  ----------------------------------- -----------------------------------
+  `MENU!`                             Provides a concise orientation to
+                                      the project's purpose, accepted
+                                      inputs, and principal capabilities.
 
-Project commands end with `!`. Modes, labels, categories, and other selectors are not project commands and need not end with `!`. For example, writing-modes uses `POL`, `PRO`, and `Q` as mode identifiers.
+  `COCOWASH!`                         Performs an identity check,
+                                      retrieves the current canonical
+                                      settings from GitHub, prints them,
+                                      and re-anchors the chat to them.
 
-## Universal project commands
+  `MACUMBA!`                          Performs the project's principal
+                                      finalization action using decisions
+                                      or work already established in the
+                                      chat.
+  -----------------------------------------------------------------------
 
-### MENU!
+Project-specific settings may define additional behavior, modes, or
+selectors.
 
-`MENU!` is the orientation command. It should briefly explain what the current project does, what kinds of inputs it accepts, and the most important ways to use it. Project-specific modes or capabilities may be summarized here.
+## `COCOWASH!` and canonical settings
 
-Use `MENU!` when you need a concise reminder of what a project can do.
+`COCOWASH!` is designed to reduce drift between the settings stored in
+this repository and the behavior of an active ChatGPT Project.
 
-### COCOWASH!
+When invoked, the project:
 
-`COCOWASH!` is the identity and orientation check. It is defined only in the canonical project-settings file, not in the bootstrap.
+1.  returns the identity defined under `# Role`, converting only the
+    opening `You are ...` to `I am ...`;
+2.  identifies the latest commit affecting the specified canonical
+    settings file on the specified branch;
+3.  retrieves that file at the exact commit SHA rather than relying on a
+    cached, indexed, remembered, or previously retrieved copy;
+4.  treats that commit-specific file as authoritative;
+5.  prints the complete settings while preserving their Markdown
+    structure; and
+6.  silently re-anchors subsequent behavior to those settings.
 
-Every project keeps its canonical identity under `# Role` as a second-person instruction beginning with `You are ...`. When `COCOWASH!` is invoked, the model converts only that opening into first person and returns the identity beginning with `I am ...`.
+This mechanism does not override higher-priority ChatGPT or system
+instructions.
 
-For example, writing-modes contains:
+## Naming convention
 
-> You are writing-modes, a mode-based editor for academic prose and related professional writing.
+Each canonical project uses one lowercase kebab-case identifier
+consistently across:
 
-Its `COCOWASH!` response is therefore:
+-   the filename stem;
+-   the YAML `title`;
+-   the project name in `# Role`;
+-   references to the project in `MENU!`; and
+-   the first-person identity returned by `COCOWASH!`.
 
-> I am writing-modes, a mode-based editor for academic prose and related professional writing.
+For example,
+[`projects/project-settings-editor.md`](projects/project-settings-editor.md)
+uses `project-settings-editor` as its filename stem and YAML title, and
+its role begins with `You are project-settings-editor, ...`.
 
-After the first-person identity, the model must retrieve the canonical settings from the specified GitHub branch without relying on a previously retrieved, cached, indexed, or remembered copy. It first verifies the latest commit SHA affecting that file on that branch, retrieves the file at that exact commit, treats the commit-specific version as authoritative, and prints the complete settings before silently re-anchoring behavior to them for the remainder of the chat.
+Reusable prompts may use their own title conventions; their front matter
+is authoritative.
 
-This serves two purposes. First, it provides a simple identity check tied to a verifiably current canonical file. Second, it reduces project drift by restoring the project's intended interpretation rules. For example, in writing-modes, `PRO Top 10 soccer-focused YouTubers` should be interpreted as a request to enter `PRO` prompt-editing mode, not as a request to list YouTubers directly.
+## Using a reusable prompt
 
-`COCOWASH!` does not override higher-priority ChatGPT or system instructions. It re-establishes the behavior defined by the current project settings within those constraints.
+Open the desired file under `prompts/` and provide its instructions to
+the language model together with the material to be processed.
 
-### MACUMBA!
+Each prompt defines its own scope and safeguards. For example:
 
-`MACUMBA!` is the project-finalization command. Its exact behavior is project-specific, but it should perform the principal completion action using decisions and work already established in the current chat.
+-   `pretty-python-scripts` and `pretty-r-scripts` emphasize readability
+    and documentation while protecting computational behavior;
+-   `readme-builder` requires repository inspection before README
+    creation or revision and prohibits invented repository facts;
+-   `review-technical-manuscript` uses seven separate review passes
+    rather than a single undifferentiated review.
 
-Examples include producing final project settings, returning the final preferred prompt, or returning the final preferred writing revision without alternatives or commentary.
+Read the selected prompt before use because its task-specific rules take
+precedence over assumptions suggested by its filename alone.
 
-## Bootstrap workflow
+## Editing and extending the repository
 
-Copy `projects/bootstrap.md` into a ChatGPT Project's native Project Settings field and replace `[PROJECT_SETTINGS_URL]` with the raw GitHub URL for the corresponding canonical settings file.
+When adding or revising a project configuration:
 
-Then start a new chat in that Project and send `COCOWASH!` to test whether the canonical settings were retrieved and to re-anchor the chat to them.
+-   preserve the common project-settings contract;
+-   keep the project identifier consistent throughout the file;
+-   keep project commands ending in `!`;
+-   distinguish commands from modes, labels, categories, or selectors;
+-   keep the canonical settings in `projects/` and use `bootstrap.md`
+    only as the loader.
+
+When adding or revising a reusable prompt:
+
+-   place it under `prompts/`;
+-   give it clear front matter describing its purpose;
+-   define its scope, constraints, and expected output explicitly;
+-   update this README so the prompt inventory remains consistent with
+    the repository.
+
+## Reproducibility and versioning
+
+These instructions are version-controlled Markdown files. For workflows
+that depend on a particular prompt or project configuration, record the
+Git commit SHA or otherwise preserve the exact file version used.
+
+This is especially important for `COCOWASH!`-enabled projects: the
+command intentionally resolves the current canonical settings, so
+behavior can change when the corresponding project file changes on the
+selected branch.
+
+## License
+
+No license file is included in the current repository. Public
+availability on GitHub should not be interpreted as granting a
+particular reuse license.

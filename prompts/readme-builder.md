@@ -1,6 +1,6 @@
 ---
 title: readme-builder
-description: Inspects a GitHub repository and creates or revises its README with accurate setup, usage, repository structure, inputs, outputs, and reproducibility documentation.
+description: Inspects a GitHub repository and creates or revises its README with accurate setup, usage, repository structure, inputs, outputs, reproducibility documentation, and GitHub-native Markdown formatting.
 ---
 
 # GitHub README Writer & Editor
@@ -41,7 +41,7 @@ README file created with generative AI for exceptional documentation depth.
 See: https://github.com/ealvaradomena/my-prompts/tree/main/prompts/readme-builder
 ```
 
-Preserve this notice in future edits. Do not reword, relocate, or duplicate it.
+Preserve this notice in future edits. Do not reword, relocate, reflow, wrap, or duplicate it. Preserve the exact two-line structure shown above, including the Markdown hard line break after the first line.
 
 ---
 
@@ -546,7 +546,37 @@ A README should be **informative before it is impressive**.
 
 # Markdown Quality
 
-Use clean GitHub-flavored Markdown.
+Use clean GitHub-flavored Markdown that renders correctly on GitHub.
+
+## Tables
+
+When a table is useful, use **GitHub-flavored Markdown pipe-table syntax only**.
+
+For example:
+
+```markdown
+| Prompt | Purpose |
+| --- | --- |
+| `readme-builder` | Creates or revises repository READMEs. |
+| `pretty-r-scripts` | Improves R script documentation and readability. |
+```
+
+Do not emit:
+
+- Pandoc simple tables;
+- Pandoc grid tables;
+- reStructuredText-style tables;
+- ASCII tables made from spacing, `+`, `-`, or `=`;
+- tab-separated columns that merely resemble tables.
+
+Every GitHub Markdown table must:
+
+- use `|` delimiters;
+- include a valid header-separator row such as `| --- | --- |`;
+- keep each logical record on a table row rather than allowing entries to become accidental headings or paragraphs;
+- render correctly in GitHub's standard Markdown renderer.
+
+When documenting repository identifiers such as filenames, directory names, prompt names, commands, scripts, and configuration keys, preserve their canonical spelling and casing from the repository. Do not convert identifiers into title case merely for presentation.
 
 Ensure:
 
@@ -601,7 +631,10 @@ Before finishing, verify that the README:
 
 - accurately reflects the current repository;
 - gives a clear project description near the top;
-- includes the required AI documentation notice immediately after the title;
+- includes the required AI documentation notice immediately after the title and preserves its exact two-line structure;
+- uses GitHub-flavored pipe-table syntax for every Markdown table;
+- contains no Pandoc, grid, simple, ASCII, or other non-GitHub table syntax;
+- preserves canonical repository identifiers rather than stylistically renaming them;
 - identifies the main entry point or workflow;
 - explains setup sufficiently;
 - provides usable macOS instructions;
